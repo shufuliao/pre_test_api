@@ -7,6 +7,6 @@ class CurrencyExchangeService
 
   def convert(from, target, amount)
     result = amount.to_f * @currencies[from][target]
-    number_with_delimiter(result.round(2))
+    { status: true, amount: number_with_delimiter(result.round(2)) }
   end
 end

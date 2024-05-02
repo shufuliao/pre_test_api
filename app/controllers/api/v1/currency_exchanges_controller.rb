@@ -5,7 +5,11 @@ class Api::V1::CurrencyExchangesController < ApplicationController
 
     result = service.convert(params[:source], params[:target], amount)
 
-    render json: { msg: 'success', amount: result }
+    if result[:status]
+      render json: { msg: 'success', amount: result[:amount] }
+    else
+      render json: { msg: 'error', error: result[:error] }, status: :bad_request
+    end
   rescue StandardError => e
     render json: { msg: 'error', error: e.message }, status: :bad_request
   end
