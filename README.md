@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby Version
+  3.3.0
 
-Things you may want to cover:
+* Rails Version
+  7.1.3.2
 
-* Ruby version
+* API URL
+```
+http://localhost:3000/api/v1/convert
+```
 
-* System dependencies
+* Docker 啟動指令
 
-* Configuration
+build image
+```
+docker build --build-arg MASTER_KEY="$MASTER_KEY" -t pre_test_api .
+```
+請替換$MASTER_KEY為你的主鍵。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+run container
+```
+docker run -p 3000:3000 pre_test_api
+```
